@@ -97,29 +97,29 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'railway',
-#        'USER': 'root',
-#        'PASSWORD': 'gfaaGBhc25-F6-fgdhECGehDaCe54A1A',  # TODO: this should be retrieved
-#        # from environment variable during production
-#        'HOST': 'viaduct.proxy.rlwy.net',
-#        'PORT': '39837'
-#    },
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'matik_db',
-        'USER': 'root',
-        'PASSWORD': 'abcd.1234',  # TODO: this should be retrieved
-        # from environment variable during production
-        'HOST': '127.0.0.1',
-        'PORT': '3307'
-    },
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'railway',
+       'USER': 'root',
+       'PASSWORD': 'EpYnDsKOEaVRNofCVcwJKLJKAUjUBXVg',  # TODO: this should be retrieved
+       # from environment variable during production
+       'HOST': 'monorail.proxy.rlwy.net',
+       'PORT': '24096'
+   },
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'matik_db',
+#         'USER': 'root',
+#         'PASSWORD': 'abcd.1234',  # TODO: this should be retrieved
+#         # from environment variable during production
+#         'HOST': '127.0.0.1',
+#         'PORT': '3307'
+#     },
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
