@@ -35,8 +35,8 @@ class HTTP401Error(BaseException):
     def __init__(self, *args, **kwargs):
         self.err_resp[idf.ERR][idf.ERR_CODE] = "1"
         self.err_resp[idf.ERR][idf.ERR_MSG_ID] = "ERR_UNAUTHORIZED"
-        self.err_resp[idf.ERR][idf.ERR_MSG] = "User is unauthorized"
-        self.err_resp[idf.ERR][idf.ERR_DETAIL] = "User is unauthorized to access resource"
+        self.err_resp[idf.ERR][idf.ERR_MSG] = "Invalid Username/Password."
+        self.err_resp[idf.ERR][idf.ERR_DETAIL] = "Please try again"
         self.err_resp[idf.ERR][idf.STATUS_CODE] = 401
 
         super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
@@ -99,6 +99,16 @@ class UserNotFoundError(BaseException):
         self.err_resp[idf.ERR][idf.ERR_CODE] = "10"
         self.err_resp[idf.ERR][idf.ERR_MSG_ID] = "ERR_USER_NOT_FOUND"
         self.err_resp[idf.ERR][idf.ERR_MSG] = "User is invalid or does not exist"
+        self.err_resp[idf.ERR][idf.ERR_DETAIL] = "Please try again"
+        self.err_resp[idf.ERR][idf.STATUS_CODE] = 500
+
+        super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
+        
+class UsernameAlreadyExist(BaseException):
+    def __init__(self, *args, **kwargs):
+        self.err_resp[idf.ERR][idf.ERR_CODE] = "10"
+        self.err_resp[idf.ERR][idf.ERR_MSG_ID] = "ERR_USERNAME_ALREADY_EXIST"
+        self.err_resp[idf.ERR][idf.ERR_MSG] = "Username already exist"
         self.err_resp[idf.ERR][idf.ERR_DETAIL] = "Please try again"
         self.err_resp[idf.ERR][idf.STATUS_CODE] = 500
 

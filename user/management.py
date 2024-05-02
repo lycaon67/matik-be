@@ -136,7 +136,10 @@ class UserManagement(Repository):
             
         except Exception as error:
             print("[Error]", error)
-            raise error 
+            if str(error) == "{'username': [ErrorDetail(string='user with this username already exists.', code='unique')]}":
+                raise UsernameAlreadyExist
+            else:    
+                raise error 
         return resp_data
     
     

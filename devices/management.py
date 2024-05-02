@@ -269,7 +269,10 @@ class DevicesManagement(Repository):
                 'type': instance.type
             }
             # DevicesManagement().update_device(data=device)
-            resp_data = super().update(save_data, instance)
+            resp_data = super().update(save_data, instance) 
+            channels_mgnt = ChannelsManagement()
+            channels_mgnt.deleteChannelRoom(instance.id)
+
         except Exception as err:
             print(err)
     
