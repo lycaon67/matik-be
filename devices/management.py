@@ -244,6 +244,13 @@ class DevicesManagement(Repository):
             response = super().find_by_criteria(criteria)
             instance = common.get_value(idf.INSTANCES, response)[0]
 
+            if instance.home.id == home_id:
+                raise DeviceAlreadyAdded
+            
+            if instance.home != None:
+                raise DeviceAlreadyAssigned
+
+
             save_data = {
                 'id': instance.id,
                 'key': instance.key,
@@ -252,6 +259,13 @@ class DevicesManagement(Repository):
             }
             # DevicesManagement().update_device(data=device)
             resp_data = super().update(save_data, instance)
+            
+        except DeviceAlreadyAssigned: 
+            raise DeviceAlreadyAssigned
+        
+        except DeviceAlreadyAdded: 
+            raise DeviceAlreadyAdded
+        
         except Exception as err:
             print(err)
             raise DeviceNotFoundError

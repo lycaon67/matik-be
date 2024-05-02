@@ -114,6 +114,27 @@ class UsernameAlreadyExist(BaseException):
 
         super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
 
+class DeviceAlreadyAssigned(BaseException):
+    def __init__(self, *args, **kwargs):
+        self.err_resp[idf.ERR][idf.ERR_CODE] = "10"
+        self.err_resp[idf.ERR][idf.ERR_MSG_ID] = "ERR_DEVICE_ALREADY_ASSIGNED"
+        self.err_resp[idf.ERR][idf.ERR_MSG] = "Device Key already assigned to other home."
+        self.err_resp[idf.ERR][idf.ERR_DETAIL] = "Please add other device."
+        self.err_resp[idf.ERR][idf.STATUS_CODE] = 500
+
+        super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
+class DeviceAlreadyAdded(BaseException):
+    def __init__(self, *args, **kwargs):
+        self.err_resp[idf.ERR][idf.ERR_CODE] = "10"
+        self.err_resp[idf.ERR][idf.ERR_MSG_ID] = "ERR_DEVICE_ALREADY_ASSIGNED"
+        self.err_resp[idf.ERR][idf.ERR_MSG] = "Device Key already assigned to this home."
+        self.err_resp[idf.ERR][idf.ERR_DETAIL] = "Please add other device."
+        self.err_resp[idf.ERR][idf.STATUS_CODE] = 500
+
+        super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
+
+
+
 
 
 
