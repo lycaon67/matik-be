@@ -144,6 +144,10 @@ class RoomManagement(Repository):
     def add_rooms_by_house(self, data):
         resp_data = {}
         try:
+            rooms_list = self.get_rooms_list_by_house(id=data['home_id'])
+            if any(room['name'] == data['room']['name'] for room in rooms_list):
+                raise RoomNameDuplicate
+
             room={
                 "home": data['home_id'],
                 idf.NAME: data['room']['name'],
@@ -151,6 +155,10 @@ class RoomManagement(Repository):
             }
             response = super().save(room)
             resp_data = common.get_value(idf.SERIALIZED, response)
+
+        except RoomNameDuplicate:
+            raise RoomNameDuplicate
+            
         except Exception as exception:
             raise exception
 

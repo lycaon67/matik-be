@@ -133,6 +133,17 @@ class DeviceAlreadyAdded(BaseException):
 
         super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
 
+        
+class RoomNameDuplicate(BaseException):
+    def __init__(self, *args, **kwargs):
+        self.err_resp[idf.ERR][idf.ERR_CODE] = "10"
+        self.err_resp[idf.ERR][idf.ERR_MSG_ID] = "ERR_ROOM_NAME_DUPLICATE"
+        self.err_resp[idf.ERR][idf.ERR_MSG] = "Room name is duplicate in the house."
+        self.err_resp[idf.ERR][idf.ERR_DETAIL] = "Please try another name."
+        self.err_resp[idf.ERR][idf.STATUS_CODE] = 500
+
+        super(BaseException, self).__init__(self.err_resp, *args, **kwargs)
+
 
 
 
