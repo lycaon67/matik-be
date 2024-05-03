@@ -243,13 +243,12 @@ class DevicesManagement(Repository):
             criteria = QueryFilter(key=device_key)
             response = super().find_by_criteria(criteria)
             instance = common.get_value(idf.INSTANCES, response)[0]
-
-            if instance.home.id == home_id:
-                raise DeviceAlreadyAdded
             
             if instance.home != None:
-                raise DeviceAlreadyAssigned
-
+                if instance.home.id == home_id:
+                    raise DeviceAlreadyAdded
+                else:
+                    raise DeviceAlreadyAssigned                        
 
             save_data = {
                 'id': instance.id,
