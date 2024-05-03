@@ -377,7 +377,7 @@ class ChannelsManagement(Repository):
             super().save(temp_obj)
 
             hum_obj = {
-                'name': 'huminity',
+                'name': 'humidity',
                 'device': str(device.id),
                 'room': '',
                 'status': '0',
